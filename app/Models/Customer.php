@@ -14,6 +14,11 @@ class Customer extends Authenticatable
 
       if(isset($data['password']) && $data['password']) {
         $this->password = \Hash::make($data['password']);
-      }  
+      }
     }
+
+    public function notes()  {
+      return $this->hasMany(Note::Class);
+    }
+
 }

@@ -15,6 +15,10 @@ Route::get('/', 'IndexController@index')->name('index');
 
 Route::get('/customer/create', 'CustomerController@create')->name('customer.create');
 Route::post('/customer/store', 'CustomerController@store')->name('customer.store');
-
 Route::get('/customer/login', 'CustomerController@login')->name('customer.login');
 Route::post('/customer/login', 'CustomerController@loginStore')->name('customer.login.store');
+Route::delete('/customer/logout', 'CustomerController@logout')->name('customer.logout');
+
+Route::get('/note', 'NoteController@index')->name('note');
+Route::get('/note/create', 'NoteController@create')->name('note.create');
+Route::post('/note/create', 'NoteController@store')->name('note.store');

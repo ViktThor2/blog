@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Note;
 
 class CustomerController extends Controller
 {
@@ -42,7 +43,6 @@ class CustomerController extends Controller
       $data = $request->only('email', 'password');
       \Auth::guard('customer')->attempt($data);
       $customer = \Auth::guard('customer')->user();
-      dd($customer);
 
       if( \Auth::guard('customer')->check() ) {
         return redirect()->route('index');
@@ -50,7 +50,12 @@ class CustomerController extends Controller
           'message', 'Hibás email cím vagy jelszó');
         return redirect()->back();
       }
+    }
 
+    public function logout()
+    {
+      \Auth::guard('customer')->logout();
+      return redirect()->route('index');
     }
 
 }
